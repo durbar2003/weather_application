@@ -3,14 +3,18 @@ import {
   JupyterFrontEndPlugin
 } from '@jupyterlab/application';
 
+import { ICommandPalette } from '@jupyterlab/apputils';
+
 /**
  * Initialization data for the weather_application extension.
  */
 const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'weather_application:plugin',
+  id: 'jupyterlab_weather_application',
   autoStart: true,
-  activate: (app: JupyterFrontEnd) => {
+  requires: [ICommandPalette],
+  activate: (app: JupyterFrontEnd, pallete: ICommandPalette) => {
     console.log('JupyterLab extension weather_application is activated!');
+    console.log('ICommandPalette:', palette);
   }
 };
 
