@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
@@ -16,9 +17,13 @@
     "outDir": "lib",
     "rootDir": "src",
     "strict": true,
-    "strictNullChecks": true,
-    "target": "ES2018",
-    "types": ["jest"]
+    "strictNullChecks": false,
+    "target": "es2017",
+    "types": [
+      "node"
+    ]
   },
-  "include": ["src/*"]
+  "include": [
+    "src/*"
+  ]
 }
