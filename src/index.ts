@@ -1,56 +1,97 @@
 import {
+  ILabShell,
+  ILayoutRestorer,
   JupyterFrontEnd,
   JupyterFrontEndPlugin
-} from '@jupyterlab/application';
+} from '@jupyterlab/application'
 
-import { ICommandPalette, MainAreaWidget } from '@jupyterlab/apputils';
-
-import { Widget } from '@lumino/widgets';
+import { INotebookTracker, NotebookPanel } from '@jupyterlab/notebook'
+import { WeatherLab } from './WeatherLab'
+import '../style/index.css'
 
 /**
- * Initialization data for the jupyterlab_apod extension.
+ * Activates the WeatherLab extension.
+ *
+ * @private
+ * @param app - Jupyter application
+ * @param labShell - Jupyter lab shell
+ * @param restorer - application layout restorer
+ * @param notebookTracker - notebook tracker
+ * @returns WeatherLab
  */
-const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'jupyterlab-apod',
-  autoStart: true,
-  requires: [ICommandPalette],
-  activate: (app: JupyterFrontEnd, palette: ICommandPalette) => {
-    console.log('JupyterLab extension jupyterlab_apod is activated!');
+function activateWeatherLab(
+  app: JupyterFrontEnd,
+  labShell: ILabShell,
+  restorer: ILayoutRestorer,
+  notebookTracker: INotebookTracker
+): any {
+  let weatherlab = new WeatherLab({})
+  weatherlab.title.iconClass = 'jp-WeatherLab-icon jp-SideBar-tabIcon'
+  weatherlab.title.caption = 'Weather Lab'
+  weatherlab.id = 'weatherlab'
+  labShell.add(weatherlab, 'left', { rank: 700 })
+  labShell.currentChanged.connect(onConnect)
 
-    // Define a widget creator function,
-    // then call it to make a new widget
-    const newWidget = () => {
-      // Create a blank content widget inside of a MainAreaWidget
-      const content = new Widget();
-      const widget = new MainAreaWidget({ content });
-      widget.id = 'apod-jupyterlab';
-      widget.title.label = 'Astronomy Picture';
-      widget.title.closable = true;
-      return widget;
+  restorer.add(weatherlab, 'weatherlab')
+
+  notebookTracker.widgetAdded.connect((sender: any, nbPanel: NotebookPanel) => {
+    nbPanel.sessionContext.ready
+      .then(() => {
+        nbPanel.sessionContext.session.kernel.requestExecute({
+          code: '%load_ext weatherlab'
+        })
+
+        return createComm(nbPanel)
+      })
+      .then((comm: any) => {
+        console.log(comm)
+        weatherlab.handleChangeSignal.connect(
+          (sender: WeatherLab, data: any) => {
+            comm.send({ WEATHER_LAB_DATA: data })
+          }
+        )
+      })
+  })
+
+  /**
+   * Callback invoked when the active widget changes.
+   *
+   * @private
+   */
+  function onConnect() {
+    let widget = app.shell.currentWidget
+    if (!widget) {
+      return
     }
-    let widget = newWidget();
-
-    // Add an application command
-    const command: string = 'apod:open';
-    app.commands.addCommand(command, {
-      label: 'Random Astronomy Picture',
-      execute: () => {
-        // Regenerate the widget if disposed
-        if (widget.isDisposed) {
-          widget = newWidget();
-        }
-        if (!widget.isAttached) {
-          // Attach the widget to the main work area if it's not there
-          app.shell.add(widget, 'main');
-        }
-        // Activate the widget
-        app.shell.activateById(widget.id);
-      }
-    });
-
-    // Add the command to the palette.
-    palette.addItem({ command, category: 'Tutorial' });
   }
-};
 
-export default plugin;
+  /**
+   * Create a Comm to the current notebook.
+   *
+   * @private
+   */
+  function createComm(nbPanel: NotebookPanel): Promise<any> {
+    const comm = nbPanel.sessionContext.session.kernel.createComm('weatherlab')
+
+    comm.onMsg = (msg: any) => {
+      console.log(`WeatherLab has received a message: ${JSON.stringify(msg)}`)
+    }
+
+    comm.open({ msgtype: 'WeatherLab-Frontend' })
+
+    return Promise.resolve(comm)
+  }
+}
+/**
+ * Initialization data for the weatherlab extension.
+ *
+ * @private
+ */
+const extension: JupyterFrontEndPlugin<void> = {
+  id: 'jupyterlab-weatherlab',
+  autoStart: true,
+  requires: [ILabShell, ILayoutRestorer, INotebookTracker],
+  activate: activateWeatherLab
+}
+
+export default extension

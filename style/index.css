@@ -1,1 +1,137 @@
-@import url('base.css');
+[data-jp-theme-light='true'] .jp-WeatherLab-icon {
+  background-image: url(weatherlab-light.svg);
+}
+
+[data-jp-theme-light='false'] .jp-WeatherLab-icon {
+  background-image: url(weatherlab-dark.svg);
+}
+
+.jp-WeatherLab {
+  display: flex;
+  flex-direction: column;
+  background: var(--jp-layout-color1);
+  color: var(--jp-ui-font-color1);
+  font-size: var(--jp-ui-font-size1);
+  height: 100%;
+}
+
+.jp-WeatherLab-header {
+  border-bottom: var(--jp-border-width) solid var(--jp-border-color2);
+  flex: 0 0 auto;
+  font-size: var(--jp-ui-font-size0);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0px;
+  padding: 8px 12px;
+  text-transform: uppercase;
+}
+
+.jp-WeatherLab-content {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow: auto;
+  background-color: var(--jp-layout-color1);
+}
+
+.jp-WeatherLab-search {
+  display: flex;
+  flex-direction: row;
+  overflow: overlay;
+  background-color: var(--jp-input-active-background);
+  padding: 12px;
+  border-bottom: var(--jp-border-width) solid var(--jp-border-color2);
+}
+
+.jp-WeatherLab-search input {
+  flex: 1 1 auto;
+  background: transparent;
+  outline: none;
+  font-size: var(--jp-ui-font-size1);
+  color: var(--jp-ui-font-color0);
+  line-height: var(--jp-private-commandpalette-search-height);
+  border: var(--jp-border-width) solid var(--jp-input-border-color);
+  border-right: 0 none;
+  padding: 0 8px;
+  height: 30px;
+}
+
+.jp-WeatherLab-search button {
+  color: white;
+  background-color: var(--jp-brand-color1);
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  background-image: var(--jp-icon-search-white);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0;
+  border: 0 none;
+  border: var(--jp-border-width) solid var(--jp-brand-color1);
+  cursor: pointer;
+}
+
+.jp-WeatherLab-error-wrappaer {
+  padding: 12px;
+}
+
+.jp-WeatherLab-error {
+  color: var(--jp-ui-font-color0);
+  border-left: 5px solid var(--jp-error-color0);
+  background-color: var(--jp-error-color3);
+  padding: 12px 8px;
+}
+
+.jp-WeatherLab-item {
+  padding: 12px;
+}
+
+[data-jp-theme-light='true'] .jp-WeatherLab-item:hover {
+  background-color: var(--jp-brand-color4);
+}
+
+[data-jp-theme-light='false'] .jp-WeatherLab-item:hover {
+  background-color: var(--jp-brand-color0);
+}
+
+.jp-WeatherLab-item:not(:last-child) {
+  border-bottom: var(--jp-border-width) solid var(--jp-input-border-color);
+}
+
+.jp-WeatherLab-item-title {
+  margin-bottom: 8px;
+}
+
+.jp-WeatherLab-item-title img {
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.jp-WeatherLab-item-title strong {
+  font-weight: bold;
+}
+
+.jp-WeatherLab-item-summary {
+  display: flex;
+  flex-direction: row;
+}
+
+.jp-WeatherLab-item-summary-icon img {
+  display: block;
+  height: 48px;
+  width: 48px;
+}
+
+.jp-WeatherLab-item-summary-text {
+  flex: 1 1 auto;
+}
+
+.jp-WeatherLab-item-summary-text > div:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.jp-WeatherLab-weather {
+  text-transform: capitalize;
+}

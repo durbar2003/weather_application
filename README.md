@@ -1,6 +1,6 @@
 # weather_application
 
-[![Github Actions Status](https://github.com/durbar2003/weather_application/workflows/Build/badge.svg)](https://github.com/durbar2003/weather_application/actions/workflows/build.yml)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/durbar2003/weather_application/main?urlpath=lab)
+[![Github Actions Status](https://github.com/durbar2003/weather_application/workflows/Build/badge.svg)](https://github.com/durbar2003/weather_application/actions/workflows/build.yml)
 A jupyterlab extension to display the weather of any city selected by the user
 
 ## Requirements

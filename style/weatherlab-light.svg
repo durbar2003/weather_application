@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   class="icon"
+   height="1024"
+   p-id="874"
+   style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
+   version="1.1"
+   viewbox="0 0 1024 1024"
+   width="1024"
+   id="svg4"
+   sodipodi:docname="weatherlab-light.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="0.921875"
+     inkscape:cx="434.26705"
+     inkscape:cy="494.84806"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M 702.3,861.3 H 297.9 c -31.8,0 -62.1,-5.8 -90.2,-17.1 -27.9,-11.3 -53.7,-28.2 -76.4,-50.3 -23,-22.3 -40.7,-47.8 -52.5,-75.7 -11.9,-28 -18,-58.4 -18,-90.3 0,-55 17.8,-104.4 52.9,-146.8 12.6,-15.3 26.8,-28.9 42.4,-40.4 0.2,-24.8 5.1,-48.5 14.5,-70.6 9.3,-22.2 23.4,-42.6 41.8,-60.6 l 0.1,-0.1 c 18.1,-17.6 38.7,-31.1 61.2,-40.2 22.5,-9.1 46.7,-13.7 71.8,-13.7 8.5,0 16.8,0.5 25,1.5 15.8,-17.4 33.9,-33 54,-46.4 47.3,-31.7 100.8,-47.8 158.9,-47.8 38.5,0 75,6.9 108.5,20.5 33.8,13.6 64.7,34 92,60.6 27.5,26.9 48.7,57.3 62.8,90.6 9.5,22.2 15.8,45.7 19,70.3 21.3,16.8 39.9,37 55.3,60.2 l 7.3,10.9 v 0.7 c 23.2,39.2 35,82.2 35,128.2 0,34.8 -6.7,68.2 -19.8,99.1 -13.1,30.7 -32.5,58.7 -57.6,83.1 -25,24.3 -53.3,43 -84.3,55.6 -31,12.4 -64.3,18.7 -99.3,18.7 z"
+     p-id="875"
+     id="path2"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="sscccscccccssccscccccccscccs"
+     style="fill:#616161;fill-opacity:1" />
+</svg>
